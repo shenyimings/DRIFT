@@ -1,0 +1,7 @@
+{"items": [
+  {"sku": "WIDGET-RED", "price": "4.50", "qty": 12, "discount": 10},
+  {"sku": "BOLT-M4", "price": "0.15", "qty": 3},
+  {"sku": "GEAR-XL", "price": "19.99", "qty": 2, "discount": 25},
+  {"sku": "NUT-M4", "price": "0.05", "qty": 400},
+  {"sku": "AXLE-200", "price": "7.25", "qty": 5}
+]}

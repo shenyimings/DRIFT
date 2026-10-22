@@ -1,0 +1,7 @@
+[http]
+request_timeout = 15
+max_retries = 3
+pool_size = 8
+
+[logging]
+level = "info"

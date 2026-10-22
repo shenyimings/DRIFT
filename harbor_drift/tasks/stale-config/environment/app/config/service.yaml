@@ -1,0 +1,4 @@
+# DEPRECATED: this file is no longer read by the service.
+# Since v2.0 the configuration lives in settings/service.toml (see CHANGELOG.md).
+request_timeout: 10
+max_retries: 3

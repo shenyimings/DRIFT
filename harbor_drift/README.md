@@ -48,3 +48,16 @@ harbor_drift/run.sh               # baseline pi vs pi+DRIFT, 3 attempts each
 
 `run.sh` passes the key to Pi as `ZAI_CODING_CN_API_KEY` (what `/login zai-coding-cn` stores);
 results land in `jobs/`.
+
+## Results (glm-5.3-flash, 3 attempts each)
+
+| Agent       | Reward | How the DRIFT runs failed                                                       |
+|-------------|--------|---------------------------------------------------------------------------------|
+| `pi`        | 3/3    | –                                                                               |
+| `DriftPi`   | 0/3    | 2× message cap hit right before the verifying `pytest` re-run; 1× the second identical `pytest` run was dropped as redundant, ending the run |
+
+In every DRIFT run the agent had made correct or almost-correct edits. It was stopped before it
+could re-run the tests and generate `out/report.json`, so the report is missing (and a leftover
+bug stayed in one run). Planned trajectories were just `['read']` or `['read', 'bash']`; all
+edits went through the alignment judge, which accepted them. In an earlier run under API rate
+limiting, the trajectory check also blocked `python -m pytest`.

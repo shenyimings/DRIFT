@@ -140,7 +140,7 @@ export default function (pi: any) {
   };
 
   async function llm(system: string, user: string): Promise<string> {
-    for (let attempt = 0; attempt < 3; attempt++) {
+    for (let attempt = 0; attempt < 6; attempt++) {
       try {
         const res = await fetch(`${baseUrl}/chat/completions`, {
           method: "POST",
@@ -160,6 +160,7 @@ export default function (pi: any) {
         return body.choices?.[0]?.message?.content ?? "";
       } catch (e) {
         log("llm_error", { error: String(e) });
+        await new Promise((r) => setTimeout(r, 2000 * 2 ** attempt));
       }
     }
     return "";

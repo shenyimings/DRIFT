@@ -230,7 +230,7 @@ export default function (pi: any) {
       if (value === null || value === undefined) continue;
       if (/\{[^{}]*\}/.test(String(value))) continue;
       if (!(key in args)) return [false, `The argment of the checklist's key of '${key}' is not met in this function ${name}.`];
-      const a = String(args[key]);
+      const a = typeof args[key] === "string" ? (args[key] as string) : JSON.stringify(args[key]);
       const v = typeof value === "string" ? value : JSON.stringify(value);
       if (!a.includes(v) && !v.includes(a)) {
         return [false, `The argment of the function ${name}'s '${key}' value of ${a} does not align with the value of '${v}' in checklist.`];
